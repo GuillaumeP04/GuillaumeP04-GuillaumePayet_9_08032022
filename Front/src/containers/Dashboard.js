@@ -97,11 +97,11 @@ export default class {
       $('.vertical-navbar').css({ height: '150vh' })
       this.counter ++
     } else {
-      $(`#open-bill${bill.id}`).css({ background: '#0D5AE5' })
+      $(`#open-bill${bill.id}`).css({ background: '#2A2B35' })
 
-      $('.dashboard-right-container div').html(`
-        <div id="big-billed-icon" data-testid="big-billed-icon"> ${BigBilledIcon} </div>
-      `)
+      // $('.dashboard-right-container div').html(`
+      //   <div id="big-billed-icon" data-testid="big-billed-icon"> ${BigBilledIcon} </div>
+      // `)
       $('.vertical-navbar').css({ height: '120vh' })
       this.counter ++
     }
@@ -131,10 +131,8 @@ export default class {
   }
 
   handleShowTickets(e, bills, index) {
-    console.log(this.counter, this.index)
     if (this.counter === undefined || this.index !== index) this.counter = 0
     if (this.index === undefined || this.index !== index) this.index = index
-    console.log(this.counter, this.index)
     if (this.counter % 2 === 0) {
       $(`#arrow-icon${this.index}`).css({ transform: 'rotate(0deg)'})
       $(`#status-bills-container${this.index}`)
