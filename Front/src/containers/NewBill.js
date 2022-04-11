@@ -19,6 +19,12 @@ export default class NewBill {
     e.preventDefault()
     const file = this.document.querySelector(`input[data-testid="file"]`).files[0]
     const filePath = e.target.value
+    const fileExtension = filePath.split('.').pop();
+    let allowedExtensions = ["png", "jpg", "jpeg"]
+    if (allowedExtensions.includes(fileExtension) === false){
+      this.document.querySelector(`input[data-testid="file"]`).value = null
+      return alert("Le fichier n'est pas valide");
+    }
     const fileName = filePath[filePath.length-1]
     const formData = new FormData()
     const email = JSON.parse(localStorage.getItem("user")).email
@@ -34,7 +40,6 @@ export default class NewBill {
         }
       })
       .then(({fileUrl, key}) => {
-        console.log(fileUrl)
         this.billId = key
         this.fileUrl = fileUrl
         this.fileName = fileName

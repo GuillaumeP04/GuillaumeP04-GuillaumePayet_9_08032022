@@ -20,11 +20,9 @@ const row = (bill) => {
   }
 
 const rows = (data) => {
-  data.sort(function compare(a, b) {
-    var dateA = new Date(a.date);
-    var dateB = new Date(b.date);
-    return dateB - dateA;
-  });
+  data.sort(function(a, b) {
+    return new Date(b.date) - new Date(a.date);
+  })
   return (data && data.length) ? data.map(bill => row(bill)).join("") : ""
 }
 
